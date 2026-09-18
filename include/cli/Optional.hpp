@@ -28,7 +28,7 @@ namespace tbaricault::cli
     class Optional final
         : public Arg<Optional<T>>
         , public ShortedArg<Optional<T>>
-        , public ValueArg<Optional<T>, std::optional<T>>
+        , public ValueArg<Optional<T>, T>
     {
 
         public:
@@ -125,6 +125,11 @@ namespace tbaricault::cli
              * @brief Argument value name
              */
             std::string _valueName;
+
+            /**
+             * @brief Whether a value has been provided
+             */
+            bool _defined = false;
 
             /**
              * @brief Argument default value

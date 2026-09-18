@@ -23,8 +23,8 @@ namespace tbaricault::cli
     template<typename T>
     const T& Optional<T>::getValue() const noexcept
     {
-        if (this->_value.has_value())
-            return (this->_value.value());
+        if (this->_defined)
+            return (this->_value);
         else
             return (this->_default);
     }
@@ -65,6 +65,7 @@ namespace tbaricault::cli
         try
         {
             this->_value = tbaricault::uniconvert::convert<std::string, T>(value);
+            this->_defined = true;
         }
         catch (const std::invalid_argument&)
         {
