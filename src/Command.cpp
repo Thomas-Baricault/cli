@@ -122,7 +122,10 @@ namespace tbaricault::cli
         std::string result = this->_name;
         Command* command = this->_parent;
         while (command)
+        {
             result = command->_name + ' ' + result;
+            command = command->_parent;
+        }
         return result;
     }
 
