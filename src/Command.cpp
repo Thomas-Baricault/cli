@@ -246,11 +246,9 @@ namespace tbaricault::cli
                 }
                 if (i == 0)
                 {
-                    const std::string& name = (
-                        arg.length() == 0 && this->_shorts.contains(arg[0])
-                            ? this->_shorts.at(arg[0])
-                            : arg
-                    );
+                    const std::string& name = arg.length() == 1 && this->_shorts.contains(arg[0])
+                        ? this->_shorts.at(arg[0])
+                        : arg;
                     if (this->_subcommands.contains(name))
                         return static_cast<Command*>(this->_args.at(name).get())->parse(context);
                 }
