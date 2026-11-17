@@ -20,15 +20,15 @@ namespace tbaricault::cli
             if (result.getArg<Flag>("help").getValue())
                 command.help(context);
             else if (result.getCallback())
-                return (result.getCallback()(context, result));
-            return (0);
+                return result.getCallback()(context, result);
+            return 0;
         }
         catch (const Command::ParsingError& e)
         {
             context.getErr()
                 << "Error: " << e.what() << std::endl
                 << "Try '" << e.getCommand().getFullPath() << " --help' for more informations" << std::endl;
-            return (1);
+            return 1;
         }
     }
 

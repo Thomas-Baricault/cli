@@ -26,12 +26,12 @@ namespace tbaricault::cli
 
     const Command& Command::ParsingError::getCommand() const noexcept
     {
-        return (this->_command);
+        return this->_command;
     }
 
     const char* Command::ParsingError::what() const noexcept
     {
-        return (this->_message.c_str());
+        return this->_message.c_str();
     }
 
     Command::Command()
@@ -82,7 +82,7 @@ namespace tbaricault::cli
     Command& Command::operator=(const Command& other)
     {
         if (&other == this)
-            return (*this);
+            return *this;
         Arg::operator=(other);
         ShortedArg::operator=(other);
         this->_parent = nullptr;
@@ -95,13 +95,13 @@ namespace tbaricault::cli
         this->_subcommands = other._subcommands;
         this->_positionals = other._positionals;
         this->_optionals = other._optionals;
-        return (*this);
+        return *this;
     }
 
     Command& Command::operator=(Command&& other) noexcept
     {
         if (&other == this)
-            return (*this);
+            return *this;
         Arg::operator=(std::move(other));
         ShortedArg::operator=(std::move(other));
         this->_parent = other._parent;
@@ -114,7 +114,7 @@ namespace tbaricault::cli
         this->_optionals = std::move(other._optionals);
         other._parent = nullptr;
         other._callback = nullptr;
-        return (*this);
+        return *this;
     }
 
     std::string Command::getFullPath() const
@@ -123,18 +123,18 @@ namespace tbaricault::cli
         Command* command = this->_parent;
         while (command)
             result = command->_name + ' ' + result;
-        return (result);
+        return result;
     }
 
     Command::Callback Command::getCallback() const noexcept
     {
-        return (this->_callback);
+        return this->_callback;
     }
 
     Command& Command::setCallback(Callback value)
     {
         this->_callback = value;
-        return (*this);
+        return *this;
     }
 
     void Command::help(const Context& context)
@@ -211,7 +211,7 @@ namespace tbaricault::cli
                     if (arg == "-h" || arg == "--help")
                     {
                         this->_args.at("help")->extract(context);
-                        return (*this);
+                        return *this;
                     }
                     if (arg.starts_with("-"))
                     {
@@ -257,7 +257,7 @@ namespace tbaricault::cli
             }
             if (i < this->_positionals.size())
                 throw std::runtime_error("too few arguments provided");
-            return (*this);
+            return *this;
         }
         catch (const ParsingError& e)
         {

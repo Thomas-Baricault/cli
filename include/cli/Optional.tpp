@@ -24,23 +24,23 @@ namespace tbaricault::cli
     const T& Optional<T>::getValue() const noexcept
     {
         if (this->_defined)
-            return (this->_value);
+            return this->_value;
         else
-            return (this->_default);
+            return this->_default;
     }
 
     template<typename T>
     Optional<T>& Optional<T>::setValueName(std::string value)
     {
         this->_valueName = std::move(value);
-        return (*this);
+        return *this;
     }
 
     template<typename T>
     Optional<T>& Optional<T>::setDefault(T value)
     {
         this->_default = std::move(value);
-        return (*this);
+        return *this;
     }
 
     template<typename T>

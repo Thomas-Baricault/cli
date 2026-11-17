@@ -13,12 +13,12 @@ namespace tbaricault::cli
 
     const std::string& BaseArg::getName() const noexcept
     {
-        return (this->_name);
+        return this->_name;
     }
 
     const std::string& BaseArg::getDescription() const noexcept
     {
-        return (this->_description);
+        return this->_description;
     }
 
     void BaseArg::extract(Context&)

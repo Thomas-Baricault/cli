@@ -23,14 +23,14 @@ namespace tbaricault::cli
     template<typename T>
     const std::string& Multiple<T>::getValueName() const noexcept
     {
-        return (this->_valueName);
+        return this->_valueName;
     }
 
     template<typename T>
     Multiple<T>& Multiple<T>::setValueName(std::string value)
     {
         this->_valueName = std::move(value);
-        return (*this);
+        return *this;
     }
 
     template<typename T>

@@ -17,13 +17,13 @@ namespace tbaricault::cli
     template<typename This, typename T>
     ValueArg<This, T>::operator const T&() const noexcept
     {
-        return (this->_value);
+        return this->_value;
     }
 
     template<typename This, typename T>
     const T& ValueArg<This, T>::getValue() const noexcept
     {
-        return (this->_value);
+        return this->_value;
     }
 
 }

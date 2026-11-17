@@ -104,7 +104,7 @@ int callback(const tbaricault::cli::Context& context, const tbaricault::cli::Com
     out << "Hello world!" << std::endl;
     if (command.getArg<tbaricault::cli::Flag>("flag"))
         out << "Flag is raised!" << std::endl;
-    return (0);
+    return 0;
 }
 
 
@@ -122,7 +122,7 @@ int main(int argc, char** argv)
         std::span(argv + 1, argc - 1)
     );
 
-    return (0);
+    return 0;
 }
 ```
 
@@ -178,7 +178,7 @@ int callback(const tbaricault::cli::Context& context, const tbaricault::cli::Com
     auto& out = context.getOut();
     out << "Hello world!" << std::endl;
     out << "Arg: " << command.getArg<tbaricault::cli::Positional<int>>("arg") << std::endl;
-    return (0);
+    return 0;
 }
 
 
@@ -195,7 +195,7 @@ int main(int argc, char** argv)
         std::span(argv + 1, argc - 1)
     );
 
-    return (0);
+    return 0;
 }
 ```
 

@@ -18,7 +18,7 @@ namespace tbaricault::cli
     const T& Command::getArg(const std::string& name) const
     {
         if (this->_args.contains(name))
-            return (*static_cast<const T*>(this->_args.at(name).get()));
+            return *static_cast<const T*>(this->_args.at(name).get());
         throw std::invalid_argument("no argument names '" + name + "'");
     }
 
@@ -46,7 +46,7 @@ namespace tbaricault::cli
         }
         else if (ptr)
             this->_optionals.insert(arg.getName());
-        return (*this);
+        return *this;
     }
 
 }

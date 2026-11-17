@@ -84,27 +84,27 @@ namespace tbaricault::cli
 
     bool Context::isEnded() const noexcept
     {
-        return (this->_current == this->_argv.size());
+        return this->_current == this->_argv.size();
     }
 
     std::ostream& Context::getOut() const noexcept
     {
-        return (*this->_out);
+        return *this->_out;
     }
 
     std::ostream& Context::getErr() const noexcept
     {
-        return (*this->_err);
+        return *this->_err;
     }
 
     std::size_t Context::getArgc() const noexcept
     {
-        return (this->_argv.size());
+        return this->_argv.size();
     }
 
     std::span<const std::string> Context::getArgv() const noexcept
     {
-        return (this->_argv);
+        return this->_argv;
     }
 
     void Context::setOut(std::ostream& out) noexcept
@@ -123,14 +123,14 @@ namespace tbaricault::cli
     {
         if (this->_current == 0)
             throw std::runtime_error("no argument to retrieve");
-        return (this->_argv[this->_current - 1]);
+        return this->_argv[this->_current - 1];
     }
 
     const std::string& Context::nextArg()
     {
         if (this->isEnded())
             throw std::runtime_error("no argument left");
-        return (this->_argv[this->_current++]);
+        return this->_argv[this->_current++];
     }
 
 }

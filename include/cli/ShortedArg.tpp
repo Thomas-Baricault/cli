@@ -26,23 +26,23 @@ namespace tbaricault::cli
     ShortedArg<This>& ShortedArg<This>::operator=(ShortedArg&& other) noexcept
     {
         if (&other == this)
-            return (*this);
+            return *this;
         this->_short = other._short;
         other._short = '\0';
-        return (*this);
+        return *this;
     }
 
     template<typename This>
     char ShortedArg<This>::getShort() const noexcept
     {
-        return (this->_short);
+        return this->_short;
     }
 
     template<typename This>
     This& ShortedArg<This>::setShort(char value) noexcept
     {
         this->_short = value;
-        return (static_cast<This&>(*this));
+        return static_cast<This&>(*this);
     }
 
 }
