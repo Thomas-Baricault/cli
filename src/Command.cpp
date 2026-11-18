@@ -149,10 +149,10 @@ namespace tbaricault::cli
         if (!this->_optionals.empty())
             out << " [OPTIONS]";
         if (!this->_subcommands.empty())
-            out << "    " << this->_name << " <SUBCOMMAND>" << std::endl;
+            out << std::endl << "    " << this->_name << " <SUBCOMMAND>";
         out << std::endl;
         if (!this->_description.empty())
-            out << std::endl << std::endl << "DESCRIPTION:" << std::endl << tbaricault::str::indent(this->_description, 4) << std::endl;
+            out << std::endl << std::endl << "DESCRIPTION:" << std::endl << std::endl << tbaricault::str::indent(this->_description, 4) << std::endl;
         if (!this->_subcommands.empty())
         {
             out << std::endl << std::endl << "SUBCOMMANDS:" << std::endl;
@@ -186,12 +186,12 @@ namespace tbaricault::cli
     void Command::shortHelp(const Context& context) const
     {
         std::ostream& out = context.getOut();
-        out << "  " << this->_name;
+        out << "    " << this->_name;
         if (this->_short)
             out << ", " << this->_short;
         out << std::endl;
         if (!this->_description.empty())
-            out << tbaricault::str::indent(this->_description, 6) << std::endl;
+            out << tbaricault::str::indent(this->_description, 8) << std::endl;
         return;
     }
 

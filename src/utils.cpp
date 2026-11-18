@@ -18,7 +18,7 @@ namespace tbaricault::cli
         {
             Command& result = command.parse(context);
             if (result.getArg<Flag>("help").getValue())
-                command.help(context);
+                result.help(context);
             else if (result.getCallback())
                 return result.getCallback()(context, result);
             return 0;
